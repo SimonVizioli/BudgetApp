@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Savings",
+        "description": "Savings category"
+    },
+    {
+        "id": 2,
+        "name": "Income",
+        "description": "Income category"
+    },
+    {
+        "id": 3,
+        "name": "Expense",
+        "description": "Expense category"
+    }
+]

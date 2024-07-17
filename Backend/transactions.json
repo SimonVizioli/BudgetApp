@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "transactionType_id": 1,
+        "transactionCategory_id": 2,
+        "user_id": 1,
+        "name": "Salary",
+        "amount": 5000,
+        "date": "2023-07-01",
+        "installment": 1
+    },
+    {
+        "id": 2,
+        "transactionType_id": 2,
+        "transactionCategory_id": 3,
+        "user_id": 1,
+        "name": "Food",
+        "amount": 200,
+        "date": "2023-07-05",
+        "installment": 1
+    }
+]

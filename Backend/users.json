@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Juan",
+        "lastname": "Perez",
+        "email": "juan.perez@example.com",
+        "password": "password123",
+        "loginStatus": true,
+        "registerDate": "2023-01-01",
+        "verifyLogin": true
+    }
+]
