@@ -6,6 +6,8 @@ import TransactionForm from "./BudgetApp/Transaction/form";
 import UserForm from "./BudgetApp/User/form";
 import "./index.css";
 import Home from "./BudgetApp/Home";
+import ErrorPage from "./utils/Error";
+import BudgetForm from "./BudgetApp/Budget/form";
 
 const router = createBrowserRouter([
     {
@@ -13,8 +15,21 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
             { path: "", element: <Home /> },
-            { path: "transaction", element: <TransactionForm /> },
-            { path: "user", element: <UserForm /> },
+            {
+                path: "transaction",
+                element: <TransactionForm />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: "budget",
+                element: <BudgetForm />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: "user",
+                element: <UserForm />,
+                errorElement: <ErrorPage />,
+            },
         ],
     },
 ]);

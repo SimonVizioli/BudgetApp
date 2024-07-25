@@ -2,17 +2,10 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../utils/Input";
-
-interface FormData {
-    name: string;
-    lastname: string;
-    email: string;
-    password: string;
-    verifyPassword: string;
-}
+import { User } from "@/utils/types";
 
 const UserForm: React.FC = () => {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState<User>({
         name: "",
         lastname: "",
         email: "",

@@ -1,26 +1,17 @@
 // src/components/Form.tsx
-import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
-import Input from "../../utils/Input";
-import axios from "axios";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface FormData {
-    name: string;
-    description: string;
-    transactionType_id: number;
-    transactionCategory_id: number;
-    user_id: number;
-    amount: number;
-    date: string;
-    installment: number;
-}
+import Input from "../../utils/Input";
+import SelectTransactionCategory from "../TransactionCategory/select";
+import SelectTransactionType from "../TransactionType/select";
+import { Transaction } from "@/utils/types";
 
 const TransactionForm: React.FC = () => {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState<Transaction>({
         name: "",
         description: "",
-        transactionType_id: 0,
-        transactionCategory_id: 0,
+        transactionType_id: 1,
+        transactionCategory_id: 1,
         user_id: 0,
         amount: 0,
         date: "",
@@ -42,20 +33,6 @@ const TransactionForm: React.FC = () => {
         await console.log(formData);
     };
 
-    const fetchTransactions = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:3000/transaction"
-            );
-            console.log(response.data);
-        } catch (error) {
-            console.error("Error fetching:", error);
-        }
-    };
-
-    useEffect(() => {
-        fetchTransactions();
-    }, []);
     return (
         <form
             onSubmit={handleSubmit}
@@ -64,13 +41,22 @@ const TransactionForm: React.FC = () => {
             <h2 className="text-xl font-medium text-black py-6">
                 Transactions
             </h2>
-            <Input
-                label="Name"
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-            />
+            <div className="flex space-x-1">
+                <Input
+                    label="Name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                />
+                <Input
+                    label="Date"
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                />
+            </div>
             <Input
                 label="Description"
                 type="text"
@@ -78,20 +64,27 @@ const TransactionForm: React.FC = () => {
                 value={formData.description}
                 onChange={handleChange}
             />
-            <Input
-                label="Amount"
-                type="number"
-                name="amount"
-                value={formData.amount}
-                onChange={handleChange}
-            />
-            <Input
-                label="date"
-                type="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-            />
+            <div className="flex space-x-1">
+                <SelectTransactionCategory />
+                <SelectTransactionType />
+            </div>
+            <div className="flex space-x-1">
+                <Input
+                    label="Amount"
+                    type="number"
+                    name="amount"
+                    value={formData.amount}
+                    onChange={handleChange}
+                />
+                <Input
+                    label="Installment"
+                    type="number"
+                    name="installment"
+                    value={formData.installment}
+                    onChange={handleChange}
+                />
+            </div>
+
             <div className="inline-flex">
                 <button
                     onClick={() => navigate(-1)}
