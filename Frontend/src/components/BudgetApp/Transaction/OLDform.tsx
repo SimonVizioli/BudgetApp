@@ -1,10 +1,11 @@
 // src/components/Form.tsx
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../../utils/Input";
+import Input from "../../../utils/Input";
 import SelectTransactionCategory from "../TransactionCategory/select";
 import SelectTransactionType from "../TransactionType/select";
 import { Transaction } from "@/utils/types";
+import { Button } from "@/components/ui/button";
 
 const TransactionForm: React.FC = () => {
     const [formData, setFormData] = useState<Transaction>({
@@ -92,12 +93,13 @@ const TransactionForm: React.FC = () => {
                 >
                     Back
                 </button>
-                <button
+                <button type="submit">Submit</button>
+                <Button
                     type="submit"
                     className="bg-green-400 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
                 >
-                    Submit
-                </button>
+                    Add
+                </Button>
             </div>
         </form>
     );

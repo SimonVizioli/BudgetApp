@@ -1,25 +1,31 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./BudgetApp/Layout/main";
-import TransactionForm from "./BudgetApp/Transaction/form";
-import UserForm from "./BudgetApp/User/form";
+import BudgetForm from "./components/BudgetApp/Budget/form";
+import Home from "./components/BudgetApp/Home";
+import TransactionForm from "./components/BudgetApp/Transaction/form";
+import UserForm from "./components/BudgetApp/User/form";
+import LoginForm from "./components/BudgetApp/User/login";
+import RegisterForm from "./components/BudgetApp/User/register";
+import App from "./app";
 import "./index.css";
-import Home from "./BudgetApp/Home";
 import ErrorPage from "./utils/Error";
-import BudgetForm from "./BudgetApp/Budget/form";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout />,
+        element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             { path: "", element: <Home /> },
+            { path: "auth/login", element: <LoginForm /> },
+            { path: "auth/register", element: <RegisterForm /> },
             {
                 path: "transaction",
                 element: <TransactionForm />,
                 errorElement: <ErrorPage />,
             },
+
             {
                 path: "budget",
                 element: <BudgetForm />,
@@ -28,6 +34,17 @@ const router = createBrowserRouter([
             {
                 path: "user",
                 element: <UserForm />,
+                errorElement: <ErrorPage />,
+                children: [],
+            },
+            {
+                path: "login",
+                element: <LoginForm />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: "register",
+                element: <RegisterForm />,
                 errorElement: <ErrorPage />,
             },
         ],
